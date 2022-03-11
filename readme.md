@@ -18,9 +18,10 @@
 <a>
 
 - ### Yol haritası ve ileride eklenmesi planlanan özellikler
-  - kullanıcın kendi istediği kurları takip etmesi sağlanacak
-  - kur değeri kullanıcının belirlediği değerin üstüne/altına inmesi durumunda kullanıcıya uyarı verilecek
-  - discord rpc desteği eklenecek
+  - Kullanıcın kendi istediği kurları takip etmesi sağlanacak 🛠️
+  - Kur değeri kullanıcının belirlediği değerin üstüne/altına inmesi durumunda kullanıcıya uyarı verilecek ❗
+  - Ui eklenecek❗
 
-- ### Windows platformlarda bildirimler bir bug yüzünden geçici olarak kapatıldı
-    - istenirse script'i değiştirerek açılabilir
+- ### Artık bildirim yerine sesle uyarı geliyor google tts ile
+
+

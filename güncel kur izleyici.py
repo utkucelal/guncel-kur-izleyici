@@ -11,15 +11,14 @@
                                 https://github.com/utkucelal                                                       
                                                                                  """
 
-
-
 import requests
+from playsound import playsound
 import sys
 import time
 sys.path.append("..")
 from datetime import datetime
 from win10toast import ToastNotifier
-import requests
+from gtts import gTTS
 import webbrowser
 import platform as p
 import os
@@ -60,14 +59,22 @@ if int(mod) == 1 :
          usdjson = usd.json()
          try_usd= str(usdjson['try'])
          try_eur= str(eurjson['try'])
+         basic_try_usd = try_usd.split(".")
+         basic_try_eur = try_eur.split(".")
+
 
          now = datetime.now()
          dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 
          print("euro: ",try_eur,"dolar: ",try_usd,"zaman: ",dt_string)
+
+         tts = gTTS(text=f'şuan euro {basic_try_eur[0]} dolar {basic_try_usd[0]}', lang='tr')
+         tts.save("cur.mp3")
+         playsound("cur.mp3")
+         os.remove("cur.mp3")
+
+
          time.sleep(int(retimer))
-         #if str(system) == "Windows" :
-             #toaster.show_toast("bakalım battık mı",f"anlık olarak dolar: {try_usd} euro: {try_eur}",duration=notftime)
         
 
 else:

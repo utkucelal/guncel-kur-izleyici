@@ -14,7 +14,8 @@
 
 
 import requests
-import time
+import sys
+sys.path.append("..")
 from datetime import datetime
 from win10toast import ToastNotifier
 import requests
@@ -63,8 +64,8 @@ if int(mod) == 1 :
          dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 
          print("euro: ",try_eur,"dolar: ",try_usd,"zaman: ",dt_string)
-         if str(system) == "Windows" :
-             toaster.show_toast("bakalım battık mı",f"anlık olarak dolar: {try_usd} euro: {try_eur}",duration=notftime)
+         #if str(system) == "Windows" :
+             #toaster.show_toast("bakalım battık mı",f"anlık olarak dolar: {try_usd} euro: {try_eur}",duration=notftime)
 
 else:
     webbrowser.open("https://www.google.com/search?q=dolar")

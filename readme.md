@@ -18,10 +18,23 @@
 <a>
 
 - ### Yol haritası ve ileride eklenmesi planlanan özellikler
-  - Kullanıcın kendi istediği kurları takip etmesi sağlanacak 🛠️
-  - Kur değeri kullanıcının belirlediği değerin üstüne/altına inmesi durumunda kullanıcıya uyarı verilecek ❗
-  - Ui eklenecek❗
+  - Kur değeri kullanıcının belirlediği değerin üstüne/altına inmesi durumunda kullanıcıya uyarı verilecek 🔧
+  - Ui eklenecek ❗
+  - ~~Kullanıcın kendi istediği kurları takip etmesi sağlanacak~~
 
-- ### Artık bildirim yerine sesle uyarı geliyor google tts ile
+- ### yol haritası
 
+  - ### (0.0.2) Artık kullanıcılar apinin verdiği listeden istediği para birimlerini (hatta crypto varlkıları) takip edebiliyor liste için [tıklayın](https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies.json)
+
+  - ### (0.0.1-beta (release edilmedi) ) Artık bildirim yerine sesle uyarı geliyor google tts ile
+
+  - ### (0.0.1-pre release) ilk yama bugfix
+
+<details>
+<summary><strong>Ekran görüntüleri</strong></summary> 
+<img src="https://i.hizliresim.com/5agzyt6.png"/>
+<img src="https://i.hizliresim.com/2f78297.png"/>
+<img src="https://i.hizliresim.com/h33h7sf.png"/> 
+<img src="https://i.hizliresim.com/hx6eysd.png"/> 
+<img src="https://i.hizliresim.com/5ktdcb7.png"/>
 

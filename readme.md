@@ -10,10 +10,10 @@
      __/ |                                                          __/ |         
     |___/                                                          |___/       
 </pre>
-![visitors](https://visitor-badge.laobi.icu/badge?page_id=utkucelal.guncel_kur_izleyici) 
-![download](https://img.shields.io/github/downloads-pre/utkucelal/guncel_kur_izleyici/latest/total)
-![commits](https://img.shields.io/github/last-commit/utkucelal/guncel_kur_izleyici)
-![Reddit User Karma](https://img.shields.io/reddit/user-karma/combined/utkucelal11?style=flat)
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=utkucelal.guncel_kur_izleyici?style=flat-square) 
+![download](https://img.shields.io/github/downloads-pre/utkucelal/guncel_kur_izleyici/latest/total?style=flat-square)
+![commits](https://img.shields.io/github/last-commit/utkucelal/guncel_kur_izleyici?style=flat-square)
+![Reddit User Karma](https://img.shields.io/reddit/user-karma/combined/utkucelal11?style=flat-square)
 <p style="text-align: center;">https://github.com/utkucelal</p>
 <a>
 

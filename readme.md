@@ -24,7 +24,7 @@
 
 - ### yol haritası
 
-  - ### (0.0.2) Artık kullanıcılar apinin verdiği listeden istediği para birimlerini (hatta crypto varlkıları) takip edebiliyor liste için [tıklayın](https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies.json)
+  - ### (0.0.2) Artık kullanıcılar apinin verdiği listeden istediği para birimlerini (hatta crypto varlıkları) takip edebiliyor liste için [tıklayın](https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies.json)
 
   - ### (0.0.1-beta (release edilmedi) ) Artık bildirim yerine sesle uyarı geliyor google tts ile
 

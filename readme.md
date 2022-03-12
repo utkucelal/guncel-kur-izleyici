@@ -17,6 +17,9 @@
 <p style="text-align: center;">https://github.com/utkucelal</p>
 <a>
 
+[yapılacklar listesi ve ilerleme](https://github.com/utkucelal/guncel_kur_izleyici/projects/1)
+
+
 - ### Yol haritası ve ileride eklenmesi planlanan özellikler
   - Kur değeri kullanıcının belirlediği değerin üstüne/altına inmesi durumunda kullanıcıya uyarı verilecek 🔧
   - Ui eklenecek ❗

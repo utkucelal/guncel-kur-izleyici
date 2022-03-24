@@ -16,15 +16,13 @@ from playsound import playsound
 import sys
 import time
 from datetime import datetime
-from win10toast import ToastNotifier
 from gtts import gTTS
 import webbrowser
 import platform as p
 import os
 sys.path.append("..")
-clear = lambda: os.system('cls')
+clear = lambda: os.system('clear')
 system = p.system()
-toaster = ToastNotifier()
 a = 1
 #notfication settings
 notftime = 10 #notfication settings duration time

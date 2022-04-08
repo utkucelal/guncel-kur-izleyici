@@ -21,7 +21,7 @@ import webbrowser
 import platform as p
 import os
 sys.path.append("..")
-clear = lambda: os.system('clear')
+clear = lambda: os.system('cls')
 system = p.system()
 a = 1
 #notfication settings

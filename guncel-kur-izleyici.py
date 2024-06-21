@@ -1,5 +1,13 @@
+import requests
+import sys
+import time
+from datetime import datetime
+import webbrowser
+import platform as p
+import os
+
 """  
-       _   _                _   _                 _     _            _      _ 
+    _   _                _   _                 _     _            _      _ 
       (_) (_)              | | | |               (_)   | |          (_)    (_)
   __ _ _   _ _ __   ___ ___| | | | ___   _ _ __   _ ___| | ___ _   _ _  ___ _ 
  / _` | | | | '_ \ / __/ _ \ | | |/ / | | | '__| | |_  / |/ _ \ | | | |/ __| |
@@ -7,28 +15,31 @@
  \__, |\__,_|_| |_|\___\___|_| |_|\_\\__,_|_|    |_/___|_|\___|\__, |_|\___|_|
   __/ |                                                         __/ |         
  |___/                                                         |___/          
-                                                                                       
-                                https://github.com/utkucelal                                                       
-                                                                                 """
+                                                   
+                    https://github.com/utkucelal                                                       
+                                                """
 
-import requests
-from playsound import playsound
-import sys
-import time
-from datetime import datetime
-from gtts import gTTS
-import webbrowser
-import platform as p
-import os
+# Import necessary libraries
+
+# Add parent directory to sys.path
 sys.path.append("..")
-clear = lambda: os.system('cls')
-system = p.system()
-a = 1
-#notfication settings
-notftime = 10 #notfication settings duration time
 
-print("""\
-       _   _                _   _                 _     _            _      _ 
+# Define a function to clear the console
+clear = lambda: os.system('cls')
+
+# Get the operating system
+system = p.system()
+
+# Set a flag variable
+a = 1
+
+# Set notification settings
+notftime = 10  # Notification duration time
+
+# Print the header
+
+print("""
+    _   _                _   _                 _     _            _      _ 
       (_) (_)              | | | |               (_)   | |          (_)    (_)
   __ _ _   _ _ __   ___ ___| | | | ___   _ _ __   _ ___| | ___ _   _ _  ___ _ 
  / _` | | | | '_ \ / __/ _ \ | | |/ / | | | '__| | |_  / |/ _ \ | | | |/ __| |
@@ -36,88 +47,100 @@ print("""\
  \__, |\__,_|_| |_|\___\___|_| |_|\_\\__,_|_|    |_/___|_|\___|\__, |_|\___|_|
   __/ |                                                         __/ |         
  |___/                                                         |___/           
-                                                                                       
-                                                                                        """)
+                                                   
+                                                   """)
 
-mod=input("belirleyeceğiniz saniyede bir bildirim gönderen \n dolar ve euro kuru izleyicisi için 1 \n güncel kurları internetde görmek için 2 \n istediğiniz bir kur değerini (crypto valıklarda dahil) takip etmek için 3 \n yazın: ")
+# Ask for the mode of operation
+mod = input("Choose the mode of operation:\n"
+         "1. Track USD and EUR exchange rates with notifications\n"
+         "2. View current exchange rates on the internet\n"
+         "3. Track a specific currency value\n"
+         "Enter the mode number: ")
 clear()
 
-if int(mod) == 1 :
-    retimer=input("kaç saniyede bir bildirim gelsin saniye cinsnden yazın \n (1 saat= 3600 30 dakika= 1800): ")
+# Mode 1: Track USD and EUR exchange rates with notifications
+if int(mod) == 1:
+    retimer = input("Enter the notification interval in seconds\n"
+              "(1 hour = 3600, 30 minutes = 1800): ")
+    if retimer == "":
+     retimer = 1800
     
     clear()
     while a == 1:
+     # Get the exchange rates for EUR and USD
+     eur = requests.get('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json')
+     usd = requests.get('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json')
 
-    
-     eur = requests.get('https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/eur/try.json')
-     usd = requests.get('https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd/try.json')
+     # Extract the exchange rates from the response
+     eurjson = eur.json()
+     usdjson = usd.json()
+     try_usd = usdjson["usd"]["try"]
+     try_eur = eurjson["eur"]["try"]
 
+     # Get the current time
+     now = datetime.now()
+     dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 
-     for currency in eur and usd:
-         eurjson = eur.json()
-         usdjson = usd.json()
-         try_usd= str(usdjson['try'])
-         try_eur= str(eurjson['try'])
-         basic_try_usd = try_usd.split(".")
-         basic_try_eur = try_eur.split(".")
+     # Print the exchange rates and time
+     print("EUR: ", try_eur, "USD: ", try_usd, "Time: ", dt_string, "These are approximate values.")
 
+     # Wait for the specified interval
+     time.sleep(int(retimer))
 
-         now = datetime.now()
-         dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-
-         print("euro: ",try_eur,"dolar: ",try_usd,"zaman: ",dt_string)
-
-         tts = gTTS(text=f'şuan euro {basic_try_eur[0]} dolar {basic_try_usd[0]}', lang='tr')
-         tts.save("cur.mp3")
-         playsound("cur.mp3")
-         os.remove("cur.mp3")
-
-
-         time.sleep(int(retimer))
-        
-
+# Mode 2: View current exchange rates on the internet
 if int(mod) == 2:
+    # Open the Google search page for USD and EUR exchange rates
     webbrowser.open("https://www.google.com/search?q=dolar")
     webbrowser.open("https://www.google.com/search?q=euro")
 
+# Mode 3: Track a specific currency value
 if int(mod) == 3:
-    cur_DB = requests.get('https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies.json')
-    cc1= input("çevirmek istediğiniz kur değerleri için o para biriminin üç haneli kodunu bilmeniz gerekir öğrenmek için enter basın eğer biliyorsanız \n para biriminin kodunu girin: ")
-    if cc1 == "" :
-        clear()
-        webbrowser.open("https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies.json")
-        cc1= input("para biriminin kodunu girin: ")
+    # Get the currency database
+    cur_DB = requests.get('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies.min.json')
+
+    # Ask for the currency codes
+    cc1 = input("To convert a currency, you need to know the three-letter code of that currency.\n"
+          "Press Enter to learn more about currency codes, or enter the code if you already know it.\n"
+          "Enter the code of the currency you want to convert from: ")
+    if cc1 == "":
+     clear()
+     # Open the currency database to learn more about currency codes
+     webbrowser.open("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies.min.json")
+     cc1 = input("Enter the code of the currency you want to convert from: ")
+
+    # Get the currency names from the database
     curjson = cur_DB.json()
-    cc1_name= str(curjson[f'{cc1}']) 
+    cc1_name = str(curjson[f'{cc1}'])
 
+    cc2 = input(f"Now, enter the code of the currency you want to see the value of in terms of {cc1_name}:\n"
+          "Enter the code of the currency you want to convert to: ")
+    cc2_name = str(curjson[f'{cc2}'])
 
-    cc2= input(f'şimdi ise hangi para biriminin {cc1_name} karşı değerini görmek istiyorsunuz? \n para biriminin kodunu girin: ')
-    cc2_name= str(curjson[f'{cc2}'])
-
-    retimer=input("kaç saniyede bir bildirim gelsin saniye cinsnden yazın \n (1 saat= 3600 30 dakika= 1800): ")
+    retimer = input("Enter the notification interval in seconds\n"
+              "(1 hour = 3600, 30 minutes = 1800): ")
+    if retimer == "":
+     retimer = 1800
     
     clear()
     while a == 1:
+     # Get the exchange rate for the specified currency pair
+     cc = requests.get(f'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@2024-03-06/v1/currencies/{cc2}.json')
 
-    
-     cc= requests.get(f'https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/{cc2}/{cc1}.json')
+     # Extract the exchange rate from the response
+     ccjson = cc.json()
+     cc1_cc2 = ccjson[cc2][cc1]
 
+     # Get the current time
+     now = datetime.now()
+     dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 
-     for currency in cc:
-         ccjson = cc.json()
-         cc1_cc2= str(ccjson[f'{cc1}'])
-         basic_cc1_cc2 = cc1_cc2.split(".")
+     # Convert the exchange rate to an integer
+     intc = int(cc1_cc2)
+     if intc < 1:
+         intc = float(cc1_cc2)
 
+     # Print the exchange rate and time
+     print(f'1 {cc2} ≈ {intc} {cc1} Time: ', dt_string, "These are approximate values.")
 
-         now = datetime.now()
-         dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-
-         print(f'1 {cc2} = {cc1_cc2}{cc1} zaman: ',dt_string)
-
-         tts = gTTS(text=f'şuan 1 {cc2_name} {basic_cc1_cc2[0]}{cc1_name}', lang='tr')
-         tts.save("ccur.mp3")
-         playsound("ccur.mp3")
-         os.remove("ccur.mp3")
-
-
-         time.sleep(int(retimer))
+     # Wait for the specified interval
+     time.sleep(int(retimer))
